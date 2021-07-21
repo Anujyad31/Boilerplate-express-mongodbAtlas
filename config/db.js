@@ -7,7 +7,12 @@ var mongoDB = config.get('mongoURI');
 //making connectDB method that is being exported and used in server.js
 const connectDB = async () => {
 	try {
-		await mongoose.connect(mongoDB,()=>{
+		await mongoose.connect(mongoDB,
+			{ useNewUrlParser: true  ,
+			 useUnifiedTopology: true ,
+			useCreateIndex: true,
+			useFindAndModify: false},
+			()=>{
             console.log("MongoDB connected");
         })
 
